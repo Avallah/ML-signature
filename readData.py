@@ -2,8 +2,12 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-#We implement our own reader instead of using panda, because panda failed for files that are too big 
-def readData(pathToCsvFile, diff = True): #diff: preprocessing of the data by differenciation
+# Panda failed to load all the files (out of memory)
+# We implemented our own data reader
+
+def readData(pathToCsvFile, diff = False):
+    # Read the data from the csv files
+    # If diff = True, we preprocess the data by differentiating
     out = []
     with open(pathToCsvFile) as f:
         f.readline()
@@ -17,7 +21,8 @@ def readData(pathToCsvFile, diff = True): #diff: preprocessing of the data by di
         print("file " + pathToCsvFile + " read")
     return out
 
-#Read the info file with panda
+# Read the info file with panda
+
 def readInfoData(pathToCsvFile):
     out = pd.read_csv(pathToCsvFile)
     print("file " + pathToCsvFile + " read")
